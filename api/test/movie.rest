@@ -1,0 +1,24 @@
+GET http://localhost:8888/api/movies
+
+###
+
+GET http://localhost:8888/api/movies/594f7ec499e00c7385daeb4c
+
+###
+
+POST http://localhost:8888/api/movies
+Content-Type: application/json
+
+{
+  "title": "Antman",
+  "year": "2015"
+}
+
+###
+
+PATCH http://localhost:8888/api/movies/594f7ec499e00c7385daeb4c
+Content-Type: application/json
+
+{
+  "title": "Ant MAn"
+}
