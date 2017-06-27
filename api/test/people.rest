@@ -1,0 +1,17 @@
+GET http://localhost:8888/api/people
+
+###
+
+GET http://localhost:8888/api/people
+
+###
+
+POST http://localhost:8888/api/people
+Content-Type: application/json
+
+{
+  "firstname": "Gal",
+  "lastname": "gadot"
+}
+
+###

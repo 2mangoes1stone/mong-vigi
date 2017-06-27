@@ -1,0 +1,17 @@
+POST http://localhost:8888/auth
+Content-Type: application/json
+
+{
+  "email": "vigi@vigi.com",
+  "password": "password"
+}
+
+###
+
+POST http://localhost:8888/auth/register
+Content-Type: application/json
+
+{
+  "email": "vigi@vigi.com",
+  "password": "password"
+}

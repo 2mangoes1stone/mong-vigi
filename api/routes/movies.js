@@ -6,6 +6,8 @@ const router = express.Router()
 // index
 router.get('/api/movies', (req, res) => {
   Movie.find()
+    .populate('cast.person')
+    .populate('directors.person')
     .then((movies) => {
       res.json(movies)
     })
@@ -18,6 +20,8 @@ router.get('/api/movies', (req, res) => {
 router.get('/api/movies/:id', (req, res) => {
   const id = req.params.id
   Movie.findById(id)
+    .populate('cast.person')
+    .populate('directors.person')
     .then((movie) => {
       res.json(movie)
     })
@@ -48,6 +52,18 @@ router.patch('/api/movies/:id', (req, res) => {
     })
     .catch((error) => {
       res.json({ error: error })
+    })
+})
+
+// Delete
+router.delete('/api/movies/:id', (req,res) => {
+  const movie = Movie.findById(req.params.id)
+  movie.remove()
+    .then(() => {
+      res.send('Movie Deleted')
+    })
+    .catch((error) => {
+      res.status(500).json({ error: error })
     })
 })
 

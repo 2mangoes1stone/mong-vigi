@@ -10,15 +10,21 @@ POST http://localhost:8888/api/movies
 Content-Type: application/json
 
 {
-  "title": "Antman",
-  "year": "2015"
+
 }
 
 ###
 
-PATCH http://localhost:8888/api/movies/594f736b6dca7e6fc3b05319
+PATCH http://localhost:8888/api/movies/594f736b6dca7e6fc3b05318
 Content-Type: application/json
 
 {
-  "year": "2015"
+  "cast": [{
+    "person": "5952563ab8d0af502d90eed0",
+    "role": "Lead actor"
+  }]
 }
+
+###
+
+DELETE http://localhost:8888/api/movies/59525651b8d0af502d90eed1
