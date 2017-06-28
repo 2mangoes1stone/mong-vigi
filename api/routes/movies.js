@@ -23,10 +23,16 @@ router.get('/api/movies/:id', (req, res) => {
     .populate('cast.person')
     .populate('directors.person')
     .then((movie) => {
+      if (movie) {
+        res.json(movie)
+      }
+      else {
+        res.status(404).json({error: error})
+      }
       res.json(movie)
     })
     .catch((error) => {
-      res.json({ error: error })
+      res.json({ test: "test" })
     })
 })
 
@@ -57,9 +63,11 @@ router.patch('/api/movies/:id', (req, res) => {
 
 // Delete
 router.delete('/api/movies/:id', (req,res) => {
-  const movie = Movie.findById(req.params.id)
-  movie.remove()
-    .then(() => {
+  Movie.findByIdAndRemove(req.params.id)
+    .then((movie) => {
+      if (!movie) {
+      res.status(404).json({error:"not found"})
+      }
       res.send('Movie Deleted')
     })
     .catch((error) => {
