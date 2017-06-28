@@ -27,9 +27,8 @@ router.get('/api/movies/:id', (req, res) => {
         res.json(movie)
       }
       else {
-        res.status(404).json({error: error})
+        res.status(404).json({})
       }
-      res.json(movie)
     })
     .catch((error) => {
       res.json({ test: "test" })
@@ -65,11 +64,12 @@ router.patch('/api/movies/:id', (req, res) => {
 router.delete('/api/movies/:id', (req,res) => {
   Movie.findByIdAndRemove(req.params.id)
     .then((movie) => {
-      if (!movie) {
-      res.status(404).json({error:"not found"})
+      if (movie) {
+        res.json(movie)
       }
-      res.send('Movie Deleted')
-    })
+      else {
+        res.status(404).json({})
+      }
     .catch((error) => {
       res.status(500).json({ error: error })
     })
