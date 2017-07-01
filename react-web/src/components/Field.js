@@ -2,12 +2,13 @@ import React from 'react'
 
 export default function Field({
   label,
-  name
+  name,
+  type
 }) {
   return(
     <label>
       { label + ' ' }
-      <input name={ name }/>
+      <input type={ type } name={ name }/>
     </label>
   )
 }

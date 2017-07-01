@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import MoviesList from './components/MoviesList'
 import './App.css';
 import CreateMovieForm from './components/CreateMovieForm'
+import SignInForm from './components/SignInForm'
 
 class App extends Component {
   state = {
@@ -34,6 +35,7 @@ class App extends Component {
     const { error, movies } = this.state
     return (
       <div className="App">
+      <SignInForm />
       { !!error && <p>{ error.message }</p> }
       <CreateMovieForm onCreate={ this.handleCreateMovie } />
         {
