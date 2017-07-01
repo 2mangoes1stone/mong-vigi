@@ -3,22 +3,39 @@ import MoviesList from './components/MoviesList'
 import './App.css';
 import CreateMovieForm from './components/CreateMovieForm'
 import SignInForm from './components/SignInForm'
+import RegistrationForm from './components/Registrationform'
+import * as authAPI from './api/auth'
+import * as moviesAPI from './api/movies'
 
 class App extends Component {
   state = {
     error: null,
+    token: null,
     movies: null
   }
 
-  handleCreateMovie = ({ title, year }) => {
-    fetch('/api/movies', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ title, year })
+  handleRegistration = ({email, password}) => {
+    authAPI.register({email, password})
+    .then(json => {
+      this.setState({ token: json.token })
     })
-    .then(res => res.json())
+    .catch(error => {
+      this.setState({ error })
+    })
+  }
+
+  handleSignIn = ({email, password}) => {
+    authAPI.signIn({email, password})
+    .then(json => {
+      this.setState({ token: json.token })
+    })
+    .catch(error => {
+      this.setState({ error })
+    })
+  }
+
+  handleCreateMovie = ({ title, year }) => {
+    moviesAPI.createMovie({title, year})
     .then(newMovie => {
       this.setState((prevState) => {
         return {
@@ -32,10 +49,17 @@ class App extends Component {
   }
 
   render() {
-    const { error, movies } = this.state
+    const { error, token, movies } = this.state
     return (
       <div className="App">
-      <SignInForm />
+      <RegistrationForm onRegistration={ this.handleRegistration } />
+      {
+        !!token ? (
+          'Welcome'
+        ) : (
+          <SignInForm onSignIn={ this.handleSignIn } />
+        )
+      }
       { !!error && <p>{ error.message }</p> }
       <CreateMovieForm onCreate={ this.handleCreateMovie } />
         {
