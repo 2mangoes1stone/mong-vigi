@@ -52,12 +52,14 @@ class App extends Component {
     const { error, token, movies } = this.state
     return (
       <div className="App">
-      <RegistrationForm onRegistration={ this.handleRegistration } />
       {
         !!token ? (
           'Welcome'
         ) : (
-          <SignInForm onSignIn={ this.handleSignIn } />
+          <div>
+            <SignInForm onSignIn={ this.handleSignIn } />
+            <RegistrationForm onRegistration={ this.handleRegistration } />
+          </div>
         )
       }
       { !!error && <p>{ error.message }</p> }
