@@ -1,10 +1,11 @@
 const express = require('express')
 const Person = require('../models/person')
+const authMiddleware = require('../middleware/auth')
 
 const router = express.Router()
 
 // index
-router.get('/api/people', (req, res) => {
+router.get('/api/people', authMiddleware.authenticateJWT, (req, res) => {
   Person.find()
     .then((people) => {
       res.json(people)

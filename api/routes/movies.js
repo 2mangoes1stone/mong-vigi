@@ -70,8 +70,9 @@ router.delete('/api/movies/:id', (req,res) => {
       else {
         res.status(404).json({})
       }
+    })
     .catch((error) => {
-      res.status(500).json({ error: error })
+      res.json({ test: "test" })
     })
 })
 

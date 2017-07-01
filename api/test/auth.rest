@@ -2,7 +2,7 @@ POST http://localhost:8888/auth
 Content-Type: application/json
 
 {
-  "email": "vigi@vigi.com",
+  "email": "new@vigi.com",
   "password": "password"
 }
 
@@ -12,6 +12,11 @@ POST http://localhost:8888/auth/register
 Content-Type: application/json
 
 {
-  "email": "vigi@vigi.com",
+  "email": "new@vigi.com",
   "password": "password"
 }
+
+###
+
+GET http://localhost:8888/api/people
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1OTUxYzBhNjEwN2RjMjFhYjI0OTQxOTcifQ.K36U9kR6VV9Vag9g6IcmuwpeA7Zow-q-eOXOXj9ARQU
