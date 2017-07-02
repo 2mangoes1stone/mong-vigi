@@ -1,8 +1,6 @@
 import React from 'react'
 
-const HomePage = ({
-  // props
-}) => (
+const HomePage = () => (
     <div>
       <h1>Welcome!</h1>
     </div>

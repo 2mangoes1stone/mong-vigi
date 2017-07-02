@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from 'react-router-dom'
 import './App.css';
+import PrimaryNav from './components/PrimaryNav'
 import HomePage from './pages/HomePage'
 import MoviesPage from './pages/MoviesPage'
 import RegistrationPage from './pages/RegistrationPage'
@@ -60,12 +60,8 @@ class App extends Component {
     return (
       <Router>
         <main>
-          <nav>
-            <Link to='/'>Home</Link>
-            <Link to='/register'>Register</Link>
-            <Link to='/signin'>Sign In</Link>
-            <Link to='/movies'>Movies</Link>
-          </nav>
+
+          <PrimaryNav />
 
           { !!error && <p>{ error.message }</p> }
 
