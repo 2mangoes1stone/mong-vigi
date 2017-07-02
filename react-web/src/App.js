@@ -76,8 +76,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('/api/movies')
-      .then(res => res.json())
+    moviesAPI.list()
       .then(movies => {
         this.setState({ movies })
       })

@@ -1,7 +1,14 @@
-import axios from 'axios'
+import axiosapi from './init'
+
+
+// index
+export function list () {
+  return axiosapi.get('/api/movies')
+    .then(res => res.data)
+}
 
 export function createMovie({ title, year }) {
-  return axios.post('/api/movies', {
+  return axiosapi.post('/api/movies', {
       title,
       year
   })
