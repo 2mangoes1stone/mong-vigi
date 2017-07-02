@@ -14,7 +14,7 @@ server.use(bodyParser.json())
 server.use(authMiddleware.initialize)
 // CORS
 server.use(cors({
-  origin: process.env.CORS_ORIGINS.SPLIT(',')
+  origin: process.env.CORS_ORIGINS.split(',')
 }))
 
 server.use(moviesRotuer)
