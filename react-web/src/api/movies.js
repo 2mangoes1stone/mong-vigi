@@ -2,7 +2,7 @@ import axiosapi from './init'
 
 
 // index
-export function list () {
+export function list() {
   return axiosapi.get('/api/movies')
     .then(res => res.data)
 }

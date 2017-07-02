@@ -68,19 +68,19 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={ HomePage }/>
 
-            <Route exact path='/register' render={
+            <Route path='/register' render={
               () => (
                 <RegistrationPage onRegistration={ this.handleRegistration } token={ token } />
               )
             } />
 
-            <Route exact path='/signin' render={
+            <Route path='/signin' render={
               () => (
                 <SigninPage onSignin={ this.handleSignIn } token={ token } />
               )
             } />
 
-            <Route exact path='/movies' render={
+            <Route path='/movies' render={
               () => (
                 <div>
                   <CreateMovieForm onCreate={ this.handleCreateMovie } />
