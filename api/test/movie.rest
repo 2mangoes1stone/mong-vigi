@@ -6,11 +6,12 @@ GET http://localhost:8888/api/movies/594f7ec49sdhfkfsddsdswhjfhdskjh9e00c7385dae
 
 ###
 
-POST http://localhost:8888/api/movies
+POST https://apimongoosevigi.now.sh/api/movies
 Content-Type: application/json
 
 {
-
+  "title": "Antman",
+  "year": 2015
 }
 
 ###

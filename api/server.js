@@ -1,5 +1,6 @@
 require('dotenv').config()
 const express = require('express')
+const cors = require('cors')
 const bodyParser = require('body-parser')
 const authMiddleware = require('./middleware/auth')
 const moviesRotuer = require('./routes/movies')
@@ -11,6 +12,10 @@ const server = express()
 server.use(bodyParser.json())
 // connect passport to express
 server.use(authMiddleware.initialize)
+// CORS
+server.use(cors({
+  origin: process.env.CORS_ORIGINS.SPLIT(',')
+}))
 
 server.use(moviesRotuer)
 server.use(peopleRouter)
