@@ -12,7 +12,7 @@ POST http://localhost:8888/auth/register
 Content-Type: application/json
 
 {
-  "email": "new@vigi.com",
+  "email": "heyheyhey@hey.com",
   "password": "password"
 }
 

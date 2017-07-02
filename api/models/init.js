@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/mongoose-vigi');
+mongoose.connect(process.env.MONGODB_URL);
 mongoose.Promise = Promise
 
