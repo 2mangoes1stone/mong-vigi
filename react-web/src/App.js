@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
+  Switch,
   Route,
   Link
 } from 'react-router-dom'
@@ -68,28 +69,32 @@ class App extends Component {
 
           { !!error && <p>{ error.message }</p> }
 
-          <Route exact path='/' component={ HomePage }/>
+          <Switch>
+            <Route exact path='/' component={ HomePage }/>
 
-          <Route exact path='/register' render={
-            () => (
-              <RegistrationPage onRegistration={ this.handleRegistration } token={ token } />
-            )
-          } />
+            <Route exact path='/register' render={
+              () => (
+                <RegistrationPage onRegistration={ this.handleRegistration } token={ token } />
+              )
+            } />
 
-          <Route exact path='/signin' render={
-            () => (
-              <SigninPage onSignin={ this.handleSignIn } token={ token } />
-            )
-          } />
+            <Route exact path='/signin' render={
+              () => (
+                <SigninPage onSignin={ this.handleSignIn } token={ token } />
+              )
+            } />
 
-          <Route exact path='/movies' render={
-            () => (
-              <div>
-                <CreateMovieForm onCreate={ this.handleCreateMovie } />
-                <MoviesPage movies={ movies } />
-              </div>
-            )
-          } />
+            <Route exact path='/movies' render={
+              () => (
+                <div>
+                  <CreateMovieForm onCreate={ this.handleCreateMovie } />
+                  <MoviesPage movies={ movies } />
+                </div>
+              )
+            } />
+
+            <Route render={({ location }) => <p>{ location.pathname } not found</p>} />
+          </Switch>
         
         </main>
       </Router>
