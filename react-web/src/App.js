@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom'
 import MoviesList from './components/MoviesList'
 import './App.css';
 import CreateMovieForm from './components/CreateMovieForm'
@@ -51,27 +56,72 @@ class App extends Component {
   render() {
     const { error, token, movies } = this.state
     return (
-      <div className="App">
-      {
-        !!token ? (
-          'Welcome'
-        ) : (
-          <div>
-            <SignInForm onSignIn={ this.handleSignIn } />
-            <RegistrationForm onRegistration={ this.handleRegistration } />
-          </div>
-        )
-      }
-      { !!error && <p>{ error.message }</p> }
-      <CreateMovieForm onCreate={ this.handleCreateMovie } />
-        {
-          !!movies ? (
-            < MoviesList items={ movies } />
-          ) : (
-            'Loading movies…'
-          )
-        }
-      </div>
+      <Router>
+        <div className="App">
+          <nav>
+            <Link to='/'>Home</Link>
+            <Link to='/register'>Register</Link>
+            <Link to='/signin'>Sign In</Link>
+            <Link to='/movies'>Movies</Link>
+          </nav>
+
+          { !!error && <p>{ error.message }</p> }
+
+          <Route exact path='/' render={
+            () => (
+              <h1>Home</h1>
+            )
+          } />
+
+          <Route exact path='/register' render={
+            () => (
+              <div>
+                {
+                  !!token ? (
+                    'Welcome'
+                  ) : (
+                    <div>
+                      <RegistrationForm onRegistration={ this.handleRegistration } />
+                    </div>
+                  )
+                }
+              </div>
+            )
+          } />
+
+          <Route exact path='/signin' render={
+            () => (
+              <div>
+                {
+                  !!token ? (
+                    'Welcome'
+                  ) : (
+                    <div>
+                      <SignInForm onSignIn={ this.handleSignIn } />
+                    </div>
+                  )
+                }
+              </div>
+            )
+          } />
+
+          <Route exact path='/movies' render={
+            () => (
+              <div>
+              <CreateMovieForm onCreate={ this.handleCreateMovie } />
+              {
+                !!movies ? (
+                  <MoviesList items={ movies } />
+                ) : (
+                  'Loading movies…'
+                )
+              }  
+              </div>
+            )
+          } />
+        
+        </div>
+      </Router>
     );
   }
 
