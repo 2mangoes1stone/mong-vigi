@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us" ng-app="weatherApp">
+<html lang="en-us" ng-app="movieApp">
     <head>
         <title>AngularJS Movie</title>
         <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -16,11 +16,16 @@
         <script src="//code.angularjs.org/1.3.0-rc.2/angular-resource.min.js"></script>
         <script src="app.js"></script>
         <script src="routes.js"></script>
-        <script src="controllers.js"></script>        
+        <script src="controllers.js"></script>
+        <script src="services.js"></script>         
     </head>
     <body>
-        
-      <div class="container">
+        <a href="/#/">home</a>
+        <a href="/#/register">register</a>
+        <a href="/#/signin">signin</a>
+        <a href="/#/movies">movies</a>
+        <a href=""></a>
+        <div class="container">
             <div ng-view></div>
         </div>
         

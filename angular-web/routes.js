@@ -9,7 +9,7 @@ movieApp.config(function($routeProvider){
 
   .when('/register', {
     templateUrl: 'pages/register.html',
-    controller: 'registerController'
+    controller: 'registrationController'
   })
 
   .when('/signin', {

@@ -1,1 +1,12 @@
 <h1>Movies</h1>
+{{name}}
+<input type="text" ng-model="name"/>
+
+<div ng-repeat="movie in moviesResult">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>{ movie.title }</h1>
+        </div>
+    </div>
+</div>
+
